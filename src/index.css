@@ -1,0 +1,32 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght,CRSV@100..900,0&display=swap');
+
+:root {
+  font-family: "Geologica";
+  color: var(--text);
+  background-color: var(--background);
+
+  --background: #181818;
+  --middleground: #242424;
+  --foreground: #272727;
+  --primaryground: #303030;
+  --text: rgba(255, 255, 255, 0.95);
+  --subtext: rgba(255, 255, 255, 0.95);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+}
+
+span {
+  font-weight: 400;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+}
+
+.lou-transition {
+  transition: all 0.3s ease-in-out;
+}
