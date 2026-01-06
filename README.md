@@ -3,6 +3,8 @@
 LOUCORD é um projeto de estudos criado com o objetivo de aprimorar habilidades técnicas e de design no ecossistema React + Vite.<br/>
 O repositório conta com um projeto inspirado na plataforma de comunicação Discord.
 
+## Capturas de Telas
+
 ## Dependências
 
 Desenvolvido com as seguintes tecnologias:

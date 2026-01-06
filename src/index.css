@@ -7,12 +7,13 @@
   background-color: var(--background);
   text-decoration: none;
 
-  --background: #171717;
+  --background: #161616;
   --middleground: #242424;
   --foreground: #282828;
-  --primaryground: #323232;
+  --primaryground: #333333;
+  --darkground: #101010;
   --text: #FFF;
-  --subtext: #F0F0F0;
+  --subtext: #bdbdbd;
   --modal-background: rgba(0, 0, 0, 0.25);
 }
 
