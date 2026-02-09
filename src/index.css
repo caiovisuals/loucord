@@ -66,3 +66,12 @@ span {
   height: 100%;
   background-color: var(--modal-background);
 }
+
+.modal-popup {
+  position: absolute;
+  z-index: 100;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

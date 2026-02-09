@@ -10,11 +10,12 @@ type SidebarProps = {
     user: User | null
     onSelectUser: (user: User | null) => void
     onOpenUserSettings: () => void
+    onOpenAddUserModal: () => void
     currentView: "chat" | "call" 
     onChangeView: (view: "chat" | "call") => void
 }
 
-function Sidebar({ session, users, user: selectedUser, onSelectUser, onOpenUserSettings, currentView, onChangeView }: SidebarProps) {
+function Sidebar({ session, users, user: selectedUser, onSelectUser, onOpenUserSettings, onOpenAddUserModal, currentView, onChangeView }: SidebarProps) {
     return (
         <aside className="h-full w-[25%] flex flex-row z-50">
             <div className="p-2 h-full flex flex-col gap-2 bg-[var(--darkground)]">
@@ -38,20 +39,32 @@ function Sidebar({ session, users, user: selectedUser, onSelectUser, onOpenUserS
                 </button>
             </div>
             <div className="size-full flex flex-col gap-2 p-3">
-                <div className="p-2">
+                <div className="p-2 flex items-center justify-between">
                     <h2 className="text-lg">
                         {currentView === "chat" ? "Mensagens" : "Ligações"}
                     </h2>
                 </div>
                 <div className="flex flex-col gap-2 overflow-x-hidden overflow-y-auto">
-                    {users.map(user => {
-                        const isSelected = selectedUser?.id === user.id
-                        return (
-                            <div key={user.id} onClick={() => onSelectUser(user)} className={`flex flex-row items-center gap-3 cursor-pointer hover:bg-[var(--primaryground)] p-2 rounded-xl lou-transition ${isSelected ? "bg-[var(--primaryground)]" : "bg-[var(--foreground)]"} `}>
-                            <img src={user.image} alt={user.name} width={512} height={512} className="rounded-full aspect-square size-8"/>
-                            <span>{user.name}</span>
+                    {users.length === 0 ? (
+                        <div className="flex flex-col items-center justify-center gap-3 p-4 bg-[var(--foreground)] rounded-xl">
+                            <span className="text-sm opacity-70">
+                                Nenhum usuário encontrado
+                            </span>
+
+                            <button onClick={onOpenAddUserModal} className="px-4 py-2 rounded-lg bg-[var(--foreground)] hover:bg-[var(--primaryground)] lou-transition">
+                                Adicionar usuário
+                            </button>
                         </div>
-                    )})}
+                    ) : (
+                        users.map(user => {
+                            const isSelected = selectedUser?.id === user.id
+                            return (
+                                <div key={user.id} onClick={() => onSelectUser(user)} className={`flex flex-row items-center gap-3 cursor-pointer hover:bg-[var(--primaryground)] p-2 rounded-xl lou-transition ${isSelected ? "bg-[var(--primaryground)]" : "bg-[var(--foreground)]"} `}>
+                                <img src={user.image} alt={user.name} width={512} height={512} className="rounded-full aspect-square size-8"/>
+                                <span>{user.name}</span>
+                            </div>
+                        )})
+                    )}
                 </div>
                 {session?.user && (
                     <div key={session.user.id} onClick={onOpenUserSettings} className={`mt-auto justify-self-end flex flex-row items-center gap-3 cursor-pointer bg-[var(--foreground)] hover:bg-[var(--primaryground)] p-2 rounded-xl lou-transition`}>
