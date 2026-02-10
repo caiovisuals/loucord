@@ -1,3 +1,6 @@
+import { useSession } from "./_contexts/useSession"
+import type { Session } from "./_contexts/AuthContext"
+
 type User = {
     id: string
     name: string
@@ -5,7 +8,7 @@ type User = {
 }
 
 type SidebarProps = {
-    session?: { user: User | null }
+    session: Session | null
     users: User[]
     user: User | null
     onSelectUser: (user: User | null) => void
@@ -44,7 +47,7 @@ function Sidebar({ session, users, user: selectedUser, onSelectUser, onOpenUserS
                         {currentView === "chat" ? "Mensagens" : "Ligações"}
                     </h2>
                 </div>
-                <div className="flex flex-col gap-2 overflow-x-hidden overflow-y-auto">
+                <div className="flex flex-col gap-2 overflow-x-hidden overflow-y-auto sidebarscroll-hidden">
                     {users.length === 0 ? (
                         <div className="flex flex-col items-center justify-center gap-3 p-4 bg-[var(--foreground)] rounded-xl">
                             <span className="text-sm opacity-70">
@@ -59,11 +62,19 @@ function Sidebar({ session, users, user: selectedUser, onSelectUser, onOpenUserS
                         users.map(user => {
                             const isSelected = selectedUser?.id === user.id
                             return (
-                                <div key={user.id} onClick={() => onSelectUser(user)} className={`flex flex-row items-center gap-3 cursor-pointer hover:bg-[var(--primaryground)] p-2 rounded-xl lou-transition ${isSelected ? "bg-[var(--primaryground)]" : "bg-[var(--foreground)]"} `}>
-                                <img src={user.image} alt={user.name} width={512} height={512} className="rounded-full aspect-square size-8"/>
-                                <span>{user.name}</span>
-                            </div>
-                        )})
+                                <div key={user.id} onClick={() => onSelectUser(user)} className={`flex flex-row items-center justify-between gap-3 cursor-pointer hover:bg-[var(--primaryground)] p-2 rounded-xl lou-transition ${isSelected ? "bg-[var(--primaryground)]" : "bg-[var(--foreground)]"} `}>
+                                    <div className="flex flex-row items-center gap-3">
+                                        <img src={user.image} alt={user.name} width={512} height={512} className="rounded-full aspect-square size-8"/>
+                                        <span>{user.name}</span>
+                                    </div>
+                                    <button className="p-1 hover:bg-[var(--secundaryground)] rounded-full lou-transition cursor-pointer">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            )
+                        })
                     )}
                 </div>
                 {session?.user && (

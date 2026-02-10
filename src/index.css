@@ -2,76 +2,81 @@
 @import url('https://fonts.googleapis.com/css2?family=Geologica:wght,CRSV@100..900,0&display=swap');
 
 :root {
-  font-family: "Geologica";
-  color: var(--text);
-  background-color: var(--background);
-  text-decoration: none;
+    font-family: "Geologica";
+    color: var(--text);
+    background-color: var(--background);
+    text-decoration: none;
 
-  --background: #161616;
-  --middleground: #242424;
-  --foreground: #282828;
-  --primaryground: #333333;
-  --darkground: #101010;
-  --text: #FFF;
-  --subtext: #bdbdbd;
-  --modal-background: rgba(0, 0, 0, 0.25);
+    --background: #161616;
+    --middleground: #242424;
+    --foreground: #282828;
+    --primaryground: #333333;
+    --secundaryground: #444444;
+    --darkground: #101010;
+    --text: #FFF;
+    --subtext: #bdbdbd;
+    --modal-background: rgba(0, 0, 0, 0.25);
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+    background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--middleground);
+    background: var(--middleground);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--foreground);
+    background: var(--foreground);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 500;
+    font-weight: 500;
 }
 
 span {
-  font-weight: 400;
+    font-weight: 400;
 }
 
 #root {
-  width: 100%;
-  height: 100vh;
+    width: 100%;
+    height: 100vh;
+}
+
+.sidebarscroll-hidden::-webkit-scrollbar {
+    width: 0px;
 }
 
 .lou-transition {
-  transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .lou-modal-transition {
-  transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
 }
 
 .modal-background {
-  position: absolute;
-  z-index: 100;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--modal-background);
+    position: absolute;
+    z-index: 100;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--modal-background);
 }
 
 .modal-popup {
-  position: absolute;
-  z-index: 100;
+    position: absolute;
+    z-index: 100;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;
+    display: none;
 }

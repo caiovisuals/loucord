@@ -1,11 +1,8 @@
-type User = {
-    id: string
-    name: string
-    image: string
-}
+import { useSession } from "./_contexts/useSession"
+import type { Session } from "./_contexts/AuthContext"
 
 type UserSettingsModalProps = {
-    session?: { user: User | null }
+    session: Session | null
     isOpen: boolean
     onClose: () => void
 }
