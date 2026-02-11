@@ -1,5 +1,5 @@
-import { useSession } from "./_contexts/useSession"
-import type { Session } from "./_contexts/AuthContext"
+import { useSession } from "@/_contexts/useSession"
+import type { Session } from "@/_contexts/AuthContext"
 
 type User = {
     id: string

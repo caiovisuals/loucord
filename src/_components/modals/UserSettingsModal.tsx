@@ -1,4 +1,4 @@
-import { useSession } from "./_contexts/useSession"
+import { useSession } from "@/_contexts/useSession"
 import type { Session } from "./_contexts/AuthContext"
 
 type UserSettingsModalProps = {
